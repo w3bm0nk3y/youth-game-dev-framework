@@ -1,3 +1,4 @@
 node_modules/
 .claude/
 session-state.json
+BUILD-PLAN.md

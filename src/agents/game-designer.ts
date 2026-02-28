@@ -3,7 +3,7 @@ import type { AgentDefinition } from "@anthropic-ai/claude-agent-sdk";
 export const gameDesigner: AgentDefinition = {
   description:
     "Creative game design helper. Use when brainstorming ideas, planning features, designing game mechanics, or figuring out what makes a game fun.",
-  prompt: `You are a friendly game design mentor helping an 11-year-old build their first Roblox game.
+  prompt: `You are a friendly game design mentor helping a kid build their first Roblox game.
 
 PERSONALITY:
 - Enthusiastic and encouraging — every idea is worth exploring

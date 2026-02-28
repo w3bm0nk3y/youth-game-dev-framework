@@ -1,141 +1,162 @@
 # Youth Game Dev Framework
 
-A Claude Code plugin and SDK wrapper for youth Roblox game development at weekend hackathons. Designed for 11-year-old developers and their friends building games with Claude as their AI mentor.
+**Help your kid build a real Roblox game in a weekend.**
 
-## Two Deliverables
+This is a parent-friendly framework that pairs your child with Claude, an AI coding mentor, to guide them through designing, building, and publishing their own Roblox game. Think of it as a weekend hackathon in a box — your kid brings the ideas, Claude helps them bring those ideas to life.
 
-### A) Standalone Plugin (`plugin/`)
+No prior coding experience needed. The framework uses simple language, game analogies, and step-by-step Roblox Studio navigation so your daughter or son can follow along even if they've never opened Studio before.
 
-A local Claude Code plugin that works with the regular `claude` CLI. Provides youth-friendly agents, Roblox skills, slash commands, and reference docs.
+## What Your Kid Gets
 
-**Install:**
+- **5 AI mentors**, each specialized in a different part of game development:
+  - **Game Designer** — Helps brainstorm ideas and plan what to build
+  - **Luau Tutor** — Teaches Roblox's programming language, one concept at a time
+  - **World Builder** — Guides them through building environments, terrain, and maps
+  - **Bug Squasher** — Helps debug when something isn't working (and teaches them how to debug on their own)
+  - **Play Tester** — Coaches them through testing their game and making it feel polished
+- **Slash commands** to keep things moving: `/new-game`, `/playtest`, `/ship-it`, `/show-progress`
+- **8 game pattern templates** — obby, tycoon, battle system, UI design, data saving, game loops, mobile optimization, and publishing
+- **Built-in safety guardrails** — blocks dangerous terminal commands so your kid can experiment freely
+- **Session saving** — Day 1 progress carries over to Day 2
+- **Step-by-step Roblox Studio navigation** — every agent explains exactly where to click, what tab to open, and what panel to look at
 
-```bash
-# In your game project directory, create or edit .claude/settings.json:
-{
-  "plugins": ["/absolute/path/to/youth-game-dev-framework/plugin"]
-}
+## Requirements
 
-# Then run Claude Code normally:
-claude
+- [Node.js](https://nodejs.org/) 18 or newer
+- [Roblox Studio](https://create.roblox.com/) installed on your computer (Windows or Mac)
+- An [Anthropic API key](https://console.anthropic.com/) — this is what powers the AI mentor
+- Optionally, an iPad with the Roblox app for playtesting
+
+## Quick Start
+
+There are two ways to use this framework. Pick whichever fits your setup.
+
+### Option A: Standalone Plugin (simpler)
+
+Use this if you already have [Claude Code](https://claude.ai/code) installed. Just point it at the plugin folder and you're ready to go.
+
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/w3bm0nk3y/youth-game-dev-framework.git
+   ```
+
+2. In your game project directory, create or edit `.claude/settings.json`:
+   ```json
+   {
+     "plugins": ["/path/to/youth-game-dev-framework/plugin"]
+   }
+   ```
+
+3. Run Claude Code normally:
+   ```bash
+   claude
+   ```
+
+That's it — your kid now has access to all 5 agents, slash commands, game skills, and reference docs.
+
+### Option B: SDK Wrapper (full experience)
+
+This runs a dedicated hackathon program with extra features like achievements, frustration detection, and session persistence across days.
+
+1. Clone and install:
+   ```bash
+   git clone https://github.com/w3bm0nk3y/youth-game-dev-framework.git
+   cd youth-game-dev-framework
+   npm install
+   ```
+
+2. Set your API key:
+   ```bash
+   export ANTHROPIC_API_KEY=your-key-here
+   ```
+
+3. Start a new session:
+   ```bash
+   npx tsx src/index.ts
+   ```
+
+4. On Day 2, pick up where you left off:
+   ```bash
+   npx tsx src/index.ts --resume
+   ```
+
+**SDK Wrapper extras** (on top of everything in the plugin):
+- Achievement celebrations when your kid hits milestones
+- Frustration detection that injects encouragement when they're stuck
+- Safety hooks that block dangerous terminal commands
+- Day 1/Day 2 session briefing
+- Custom tools: Luau syntax checker, team progress board, code snippet generator
+
+## What a Session Looks Like
+
+Your kid starts the program and sees:
+
+```
+╔════════════════════════════════════════════════╗
+║   Youth Game Dev Framework — Roblox Hackathon  ║
+║   Day 1 — Let's Build Something Amazing!       ║
+╚════════════════════════════════════════════════╝
+
+  Commands: /new-game  /playtest  /ship-it  /show-progress
+  Type /quit to save & exit (your progress saves automatically!)
 ```
 
-**What you get:**
-- 5 youth-friendly agents (game-designer, luau-tutor, world-builder, bug-squasher, play-tester)
-- 4 slash commands (`/new-game`, `/playtest`, `/ship-it`, `/show-progress`)
-- 8 Roblox game pattern skills (obby, tycoon, battle, UI, data saving, game loop, mobile, publishing)
-- Reference docs (Luau cheatsheet, Roblox services, iPad testing guide)
-- Shell-based safety hooks
+From there, they just start talking. "I want to build an obby game!" and the AI takes it from there — asking what kind of obstacles they want, showing them how to add parts in Studio, writing the scripts, and helping them test it.
 
-### B) SDK Wrapper (`src/`)
+## How the AI Mentors Work
 
-A TypeScript program that runs Claude Agent SDK with the plugin loaded plus programmatic enhancements only possible in TypeScript.
+The framework uses a **four-layer approach** to match your kid's question to the right kind of help:
 
-**Install:**
+| Layer | Name | What it covers | Example |
+|-------|------|---------------|---------|
+| 1 | **Build It!** | Writing code, placing parts, wiring events | "How do I make the door open when a player touches it?" |
+| 2 | **Design It!** | Feature planning, layout, game structure | "We need a lobby, three arenas, and a leaderboard" |
+| 3 | **Think It Through!** | Game balance, fun, fairness | "Is it fun if one weapon is way more powerful?" |
+| 4 | **Team Up!** | Multi-system features needing everything together | "Add a shop where players buy weapons that change their avatar" |
 
-```bash
-cd youth-game-dev-framework
-npm install
-```
+Your kid doesn't need to think about layers — the AI routes their question automatically.
 
-**Run:**
+## Game Patterns Included
 
-```bash
-# New Day 1 session
-npx tsx src/index.ts
+These are ready-made templates your kid can use as starting points:
 
-# Resume Day 2
-npx tsx src/index.ts --resume
+- **Obby Builder** — Obstacle course with checkpoints, kill bricks, and a timer
+- **Tycoon System** — Earn money, buy upgrades, expand your base
+- **Battle System** — Health, damage, knockback, respawning
+- **UI Design** — Menus, HUD, buttons, and notifications
+- **Data Saving** — Save player progress between sessions
+- **Game Loop** — Round-based games with lobbies and intermissions
+- **Mobile Optimization** — Make sure everything works on iPad
+- **Publishing** — Step-by-step guide to publish on Roblox
 
-# Start with a specific prompt
-npx tsx src/index.ts "Build an obby game"
-```
+## Tips for Parents
 
-**Extra features over standalone plugin:**
-- Achievement system (PostToolUse hooks celebrate milestones)
-- Frustration detection (UserPromptSubmit hooks inject encouragement)
-- Safety guardrails (PreToolUse hooks block dangerous commands)
-- Day 1/Day 2 session briefing (SessionStart hooks)
-- Session persistence (save/resume across hackathon days)
-- Custom MCP tools (Luau syntax checker, team progress board, code snippet generator)
+- **You don't need to know how to code.** The AI handles the technical side. Your job is to be excited about what your kid is building.
+- **Let them drive.** Resist the urge to take the keyboard. The AI is patient and will guide them through mistakes.
+- **Start small.** An obby (obstacle course) or a simple tycoon game are great first projects. Don't try to build Blox Fruits on day one.
+- **Playtest on iPad.** If you have an iPad with Roblox installed, have your kid test their game on it. Seeing their creation on a real device is incredibly motivating.
+- **It's okay to quit and come back.** Progress saves automatically. Use `/quit` when they're done for the day.
 
 ## Project Structure
 
 ```
 youth-game-dev-framework/
-├── src/                          # SDK Wrapper (Deliverable B)
-│   ├── index.ts                  # Entry point — wires everything together
-│   ├── config.ts                 # Shared constants and configuration
-│   ├── session.ts                # Day 1/Day 2 session persistence
-│   ├── agents/                   # TypeScript agent definitions
-│   │   ├── game-designer.ts      # Creative design mentor (Sonnet)
-│   │   ├── luau-tutor.ts         # Patient coding teacher (Sonnet)
-│   │   ├── world-builder.ts      # Environment specialist (Haiku)
-│   │   ├── bug-squasher.ts       # Debugging detective (Sonnet)
-│   │   ├── play-tester.ts        # Playtesting coach (Haiku)
-│   │   └── index.ts              # Barrel export
-│   ├── hooks/                    # TypeScript hook callbacks
-│   │   ├── achievements.ts       # PostToolUse — milestone celebrations
-│   │   ├── encouragement.ts      # UserPromptSubmit — frustration detection
-│   │   ├── safety.ts             # PreToolUse — command/path guardrails
-│   │   ├── session-briefing.ts   # SessionStart — Day 1/2 briefing
-│   │   └── index.ts              # Barrel export
-│   └── tools/                    # Custom MCP tools
-│       ├── roblox-tools-server.ts  # MCP server (syntax check, progress, snippets)
-│       ├── snippets.ts           # 10 Luau code pattern templates
-│       └── index.ts              # Barrel export
+├── src/                    # SDK Wrapper (Option B)
+│   ├── index.ts            # Entry point
+│   ├── agents/             # AI mentor definitions
+│   ├── hooks/              # Achievement, safety, encouragement hooks
+│   └── tools/              # Luau checker, progress board, snippets
 │
-├── plugin/                       # Standalone Plugin (Deliverable A)
-│   ├── .claude-plugin/
-│   │   └── plugin.json           # Plugin manifest
-│   ├── CLAUDE.md                 # Core plugin instructions
-│   ├── commands/                 # Slash commands
-│   │   ├── new-game.md           # /new-game — guided game concept creation
-│   │   ├── playtest.md           # /playtest — structured testing session
-│   │   ├── ship-it.md            # /ship-it — publishing checklist
-│   │   └── show-progress.md      # /show-progress — team progress board
-│   ├── agents/                   # Agent definitions (markdown)
-│   │   ├── game-designer.md
-│   │   ├── luau-tutor.md
-│   │   ├── world-builder.md
-│   │   ├── bug-squasher.md
-│   │   └── play-tester.md
-│   ├── skills/                   # Game pattern skills
-│   │   ├── roblox-obby-builder/SKILL.md
-│   │   ├── roblox-tycoon-system/SKILL.md
-│   │   ├── roblox-battle-system/SKILL.md
-│   │   ├── roblox-ui-design/SKILL.md
-│   │   ├── roblox-data-saving/SKILL.md
-│   │   ├── roblox-game-loop/SKILL.md
-│   │   ├── roblox-mobile-optimization/SKILL.md
-│   │   └── roblox-publishing/SKILL.md
-│   ├── hooks/
-│   │   └── hooks.json            # Shell-based safety hooks
-│   └── docs/                     # Reference documentation
-│       ├── luau-cheatsheet.md
-│       ├── roblox-services.md
-│       ├── ipad-testing.md
-│       └── books/                # Placeholder for O'Reilly book conversions
+├── plugin/                 # Standalone Plugin (Option A)
+│   ├── CLAUDE.md           # Core instructions
+│   ├── agents/             # Agent definitions (markdown)
+│   ├── commands/           # Slash commands
+│   ├── skills/             # Game pattern templates
+│   └── docs/               # Reference documentation
 │
-├── package.json
-├── tsconfig.json
-└── BUILD-PLAN.md                 # Build plan documentation
+└── game-project/           # Sample game code
 ```
 
-## Four-Layer Cognitive Hierarchy
+## License
 
-| Layer | Name | Scope | Agent |
-|-------|------|-------|-------|
-| 4 | Team Up! | Multi-system features | Coordinator |
-| 3 | Think It Through! | Balance, fun, fairness | game-designer, play-tester |
-| 2 | Design It! | Feature design, structure | game-designer, world-builder |
-| 1 | Build It! | Scripting, building, wiring | luau-tutor, bug-squasher, world-builder |
-
-## Requirements
-
-- Node.js 18+
-- npm
-- Claude Code CLI (for standalone plugin mode)
-- Anthropic API key (for SDK wrapper mode)
-- Roblox Studio (on development laptops)
-- Roblox app (on iPads for playtesting)
+MIT — use it, modify it, share it. If your kid builds something cool, we'd love to hear about it.

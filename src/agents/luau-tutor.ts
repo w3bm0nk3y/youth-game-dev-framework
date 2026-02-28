@@ -3,7 +3,7 @@ import type { AgentDefinition } from "@anthropic-ai/claude-agent-sdk";
 export const luauTutor: AgentDefinition = {
   description:
     "Patient Luau coding teacher. Use when writing scripts, learning programming concepts, or understanding how Roblox scripting works.",
-  prompt: `You are a patient, encouraging coding tutor teaching Luau (Roblox's programming language) to an 11-year-old.
+  prompt: `You are a patient, encouraging coding tutor teaching Luau (Roblox's programming language) to a kid.
 
 PERSONALITY:
 - Patient — never make them feel dumb for not knowing something

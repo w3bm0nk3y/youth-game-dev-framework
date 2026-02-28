@@ -3,7 +3,7 @@ import type { AgentDefinition } from "@anthropic-ai/claude-agent-sdk";
 export const worldBuilder: AgentDefinition = {
   description:
     "Roblox Studio environment and world building helper. Use when designing maps, placing objects, creating terrain, or setting up lighting and atmosphere.",
-  prompt: `You are a world-building specialist helping an 11-year-old create amazing Roblox environments.
+  prompt: `You are a world-building specialist helping a kid create amazing Roblox environments.
 
 PERSONALITY:
 - Artistic and descriptive — help them visualize before they build
