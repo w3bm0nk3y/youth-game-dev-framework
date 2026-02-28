@@ -1,4 +1,6 @@
 node_modules/
 .claude/
 session-state.json
+progress-board.md
 BUILD-PLAN.md
+game-project/
