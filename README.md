@@ -20,19 +20,26 @@ No prior coding experience needed. The framework uses simple language, game anal
 - **Session saving** — Day 1 progress carries over to Day 2
 - **Step-by-step Roblox Studio navigation** — every agent explains exactly where to click, what tab to open, and what panel to look at
 
+## Which Option is Right for You?
+
+| | **Option A: Claude Code Max** | **Option B: API Key** |
+|---|---|---|
+| **Best for** | Parents who already subscribe to Claude Code Max | Parents who want pay-as-you-go pricing |
+| **Cost** | Included in your Max subscription | Pay per use via Anthropic API |
+| **Setup** | Easiest — just install the plugin | A few extra steps |
+| **Features** | All 5 agents, slash commands, game skills, reference docs | Everything in Option A **plus** achievement celebrations, frustration detection, Day 1/Day 2 session persistence, and custom tools |
+
+Not sure? **If you have a Claude Max subscription, start with Option A.** It's the fastest way to get your kid building.
+
 ## Windows 11 Setup Checklist
 
 Follow these steps to get everything installed. You only need to do this once.
 
+### Everyone needs these:
+
 - [ ] **Install Node.js** — Go to [nodejs.org](https://nodejs.org/), download the LTS version, and run the installer. Accept all defaults. To verify, open a terminal and run `node --version` — you should see something like `v20.x.x` or higher.
 - [ ] **Install Git** — Go to [git-scm.com](https://git-scm.com/download/win) and download the installer. Accept all defaults. To verify, run `git --version` in your terminal.
 - [ ] **Install Roblox Studio** — Go to [create.roblox.com](https://create.roblox.com/), sign in (or create an account), and download Roblox Studio. Your kid will need a Roblox account too.
-- [ ] **Get an Anthropic API key** — Go to [console.anthropic.com](https://console.anthropic.com/), create an account, and generate an API key. This is what powers the AI mentor. You'll need to add a payment method — usage is pay-as-you-go.
-- [ ] **Set the API key** — In your terminal, run:
-  ```bash
-  setx ANTHROPIC_API_KEY "your-key-here"
-  ```
-  Then close and reopen your terminal so it takes effect.
 - [ ] **Clone this repo** — In your terminal, run:
   ```bash
   git clone https://github.com/w3bm0nk3y/youth-game-dev-framework.git
@@ -41,57 +48,51 @@ Follow these steps to get everything installed. You only need to do this once.
   ```
 - [ ] **Optional: iPad for playtesting** — Install the Roblox app on an iPad so your kid can test their game on a real device.
 
-That's it — you're ready to go. See the Quick Start section below.
+### Option A only (Claude Code Max):
+
+- [ ] **Install Claude Code** — If you haven't already, install the Claude Code CLI. See [claude.ai/code](https://claude.ai/code) for instructions. Your Max subscription covers usage.
+
+### Option B only (API Key):
+
+- [ ] **Get an Anthropic API key** — Go to [console.anthropic.com](https://console.anthropic.com/), create an account, and generate an API key. You'll need to add a payment method — usage is pay-as-you-go.
+- [ ] **Set the API key** — In your terminal, run:
+  ```bash
+  setx ANTHROPIC_API_KEY "your-key-here"
+  ```
+  Then close and reopen your terminal so it takes effect.
 
 ## Quick Start
 
-There are two ways to use this framework. Pick whichever fits your setup.
+### Option A: Claude Code Max (Plugin)
 
-### Option A: Standalone Plugin (simpler)
+If you have a Claude Max subscription, you just load the plugin and go.
 
-Use this if you already have [Claude Code](https://claude.ai/code) installed. Just point it at the plugin folder and you're ready to go.
-
-1. Clone this repo:
-   ```bash
-   git clone https://github.com/w3bm0nk3y/youth-game-dev-framework.git
-   ```
-
-2. In your game project directory, create or edit `.claude/settings.json`:
+1. In your game project directory, create or edit `.claude/settings.json`:
    ```json
    {
      "plugins": ["/path/to/youth-game-dev-framework/plugin"]
    }
    ```
+   Replace the path with the actual location where you cloned the repo.
 
-3. Run Claude Code normally:
+2. Run Claude Code:
    ```bash
    claude
    ```
 
-That's it — your kid now has access to all 5 agents, slash commands, game skills, and reference docs.
+That's it — your kid now has access to all 5 agents, slash commands, game skills, and reference docs. No API key needed.
 
-### Option B: SDK Wrapper (full experience)
+### Option B: SDK Wrapper (API Key)
 
-This runs a dedicated hackathon program with extra features like achievements, frustration detection, and session persistence across days.
+This runs a dedicated hackathon program with extra features on top of everything in the plugin.
 
-1. Clone and install:
+1. Make sure your `ANTHROPIC_API_KEY` is set (see checklist above), then:
    ```bash
-   git clone https://github.com/w3bm0nk3y/youth-game-dev-framework.git
    cd youth-game-dev-framework
-   npm install
-   ```
-
-2. Set your API key:
-   ```bash
-   export ANTHROPIC_API_KEY=your-key-here
-   ```
-
-3. Start a new session:
-   ```bash
    npx tsx src/index.ts
    ```
 
-4. On Day 2, pick up where you left off:
+2. On Day 2, pick up where you left off:
    ```bash
    npx tsx src/index.ts --resume
    ```
