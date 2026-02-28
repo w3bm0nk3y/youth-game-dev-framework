@@ -1,0 +1,12 @@
+{
+  "name": "roblox-game-skills",
+  "version": "1.0.0",
+  "description": "Youth-friendly Roblox game development plugin for Claude Code. Provides agents, skills, commands, and documentation for 11-year-old developers building games at a weekend hackathon.",
+  "author": "Youth Game Dev Framework",
+  "capabilities": {
+    "agents": true,
+    "skills": true,
+    "commands": true,
+    "hooks": true
+  }
+}

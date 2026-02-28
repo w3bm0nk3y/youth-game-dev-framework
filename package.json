@@ -1,0 +1,32 @@
+{
+  "name": "youth-game-dev-framework",
+  "version": "1.0.0",
+  "description": "SDK-enhanced metacognition plugin for youth Roblox hackathon game development",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "check": "tsc --noEmit",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "roblox",
+    "claude-agent-sdk",
+    "youth",
+    "hackathon",
+    "game-dev"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.62",
+    "@anthropic-ai/sdk": "^0.78.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
