@@ -14,11 +14,21 @@ No prior coding experience needed. The framework uses simple language, game anal
   - **World Builder** — Guides them through building environments, terrain, and maps
   - **Bug Squasher** — Helps debug when something isn't working (and teaches them how to debug on their own)
   - **Play Tester** — Coaches them through testing their game and making it feel polished
-- **Slash commands** to keep things moving: `/new-game`, `/playtest`, `/ship-it`, `/show-progress`
+- **Slash commands** to keep things moving (see details below)
 - **8 game pattern templates** — obby, tycoon, battle system, UI design, data saving, game loops, mobile optimization, and publishing
 - **Built-in safety guardrails** — blocks dangerous terminal commands so your kid can experiment freely
 - **Session saving** — Day 1 progress carries over to Day 2
 - **Step-by-step Roblox Studio navigation** — every agent explains exactly where to click, what tab to open, and what panel to look at
+
+## Slash Commands
+
+**`/new-game`** — Guided 5-step brainstorming: pick a game type (obby, tycoon, simulator, etc.), choose a theme, define the core loop, figure out what makes it special, and name the game. Outputs a game design doc with a prioritized task list.
+
+**`/playtest`** — Structured 7-point testing checklist: does it load, can new players figure it out, does the core mechanic work, can you get stuck, how's it on iPad, is it fun, and final polish. Ends with "what's the #1 thing to fix?"
+
+**`/ship-it`** — Publishing walkthrough: final playtest, game settings (name, description, genre, max players), thumbnail/icon, spawn location check, debug cleanup, access settings, and step-by-step Roblox publishing.
+
+**`/show-progress`** — Shows the team progress board with everything accomplished so far.
 
 ## Which Option is Right for You?
 
@@ -118,7 +128,7 @@ Your kid starts the program and sees:
   Type /quit to save & exit (your progress saves automatically!)
 ```
 
-From there, they just start talking. "I want to build an obby game!" and the AI takes it from there — asking what kind of obstacles they want, showing them how to add parts in Studio, writing the scripts, and helping them test it.
+From there, they just start typing. "I want to build an obby game!" and the AI takes it from there — asking what kind of obstacles they want, showing them how to add parts in Studio, writing the scripts, and helping them test it.
 
 ## How the AI Mentors Work
 
