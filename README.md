@@ -20,12 +20,28 @@ No prior coding experience needed. The framework uses simple language, game anal
 - **Session saving** — Day 1 progress carries over to Day 2
 - **Step-by-step Roblox Studio navigation** — every agent explains exactly where to click, what tab to open, and what panel to look at
 
-## Requirements
+## Windows 11 Setup Checklist
 
-- [Node.js](https://nodejs.org/) 18 or newer
-- [Roblox Studio](https://create.roblox.com/) installed on your computer (Windows or Mac)
-- An [Anthropic API key](https://console.anthropic.com/) — this is what powers the AI mentor
-- Optionally, an iPad with the Roblox app for playtesting
+Follow these steps to get everything installed. You only need to do this once.
+
+- [ ] **Install Node.js** — Go to [nodejs.org](https://nodejs.org/), download the LTS version, and run the installer. Accept all defaults. To verify, open a terminal and run `node --version` — you should see something like `v20.x.x` or higher.
+- [ ] **Install Git** — Go to [git-scm.com](https://git-scm.com/download/win) and download the installer. Accept all defaults. To verify, run `git --version` in your terminal.
+- [ ] **Install Roblox Studio** — Go to [create.roblox.com](https://create.roblox.com/), sign in (or create an account), and download Roblox Studio. Your kid will need a Roblox account too.
+- [ ] **Get an Anthropic API key** — Go to [console.anthropic.com](https://console.anthropic.com/), create an account, and generate an API key. This is what powers the AI mentor. You'll need to add a payment method — usage is pay-as-you-go.
+- [ ] **Set the API key** — In your terminal, run:
+  ```bash
+  setx ANTHROPIC_API_KEY "your-key-here"
+  ```
+  Then close and reopen your terminal so it takes effect.
+- [ ] **Clone this repo** — In your terminal, run:
+  ```bash
+  git clone https://github.com/w3bm0nk3y/youth-game-dev-framework.git
+  cd youth-game-dev-framework
+  npm install
+  ```
+- [ ] **Optional: iPad for playtesting** — Install the Roblox app on an iPad so your kid can test their game on a real device.
+
+That's it — you're ready to go. See the Quick Start section below.
 
 ## Quick Start
 
