@@ -15,6 +15,7 @@
  *   npx tsx src/index.ts "Build an obby"  # Start with an initial prompt
  */
 
+import { mkdirSync } from "node:fs";
 import * as readline from "node:readline/promises";
 import { query } from "@anthropic-ai/claude-agent-sdk";
 import type { SDKMessage, SdkPluginConfig } from "@anthropic-ai/claude-agent-sdk";
@@ -24,6 +25,9 @@ import { hooks } from "./hooks/index.js";
 import { robloxToolsServer } from "./tools/index.js";
 import { loadSession, saveSession, detectDay } from "./session.js";
 import { PLUGIN_DIR, GAME_PROJECT_DIR } from "./config.js";
+
+// ─── Ensure game project directory exists ────────────────────────
+mkdirSync(GAME_PROJECT_DIR, { recursive: true });
 
 // ─── Activity dedup state ──────────────────────────────────────
 /** Track last printed progress messages to avoid flooding the console. */

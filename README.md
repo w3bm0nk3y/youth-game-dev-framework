@@ -181,7 +181,7 @@ youth-game-dev-framework/
 │   ├── skills/             # Game pattern templates
 │   └── docs/               # Reference documentation
 │
-└── game-project/           # Sample game code
+└── game-project/           # Your kid's game (created automatically)
 ```
 
 ## License
