@@ -25,6 +25,16 @@ import { hooks } from "./hooks/index.js";
 import { robloxToolsServer } from "./tools/index.js";
 import { loadSession, saveSession, detectDay } from "./session.js";
 import { PLUGIN_DIR, GAME_PROJECT_DIR } from "./config.js";
+import {
+  THINKING_MESSAGES,
+  STILL_WORKING_MESSAGES,
+  TOOL_FLAVOR,
+  createMessagePicker,
+} from "./thinking-messages.js";
+
+// ─── Fun message pickers ────────────────────────────────────────
+const pickThinking = createMessagePicker(THINKING_MESSAGES);
+const pickStillWorking = createMessagePicker(STILL_WORKING_MESSAGES);
 
 // ─── Ensure game project directory exists ────────────────────────
 mkdirSync(GAME_PROJECT_DIR, { recursive: true });
@@ -90,7 +100,8 @@ async function main(): Promise<void> {
 
   console.log("╔════════════════════════════════════════════════╗");
   console.log("║   Youth Game Dev Framework — Roblox Hackathon  ║");
-  console.log(`║   Day ${day} ${day === 1 ? "— Let's Build Something Amazing!" : "— Ship It Day!"}${"".padEnd(day === 1 ? 6 : 18)}║`);
+  const dayLine = `   Day ${day} ${day === 1 ? "— Let's Build Something Amazing!" : "— Ship It Day!"}`;
+  console.log(`║${dayLine.padEnd(48)}║`);
   console.log("╚════════════════════════════════════════════════╝");
   console.log();
 
@@ -152,7 +163,7 @@ async function main(): Promise<void> {
 
   // Run a single query turn and stream its messages
   async function runTurn(turnPrompt: string, resumeId?: string): Promise<string | undefined> {
-    console.log("\n   Thinking...\n");
+    console.log(`\n   ${pickThinking()}\n`);
 
     let lastActivityTime = Date.now();
 
@@ -160,7 +171,7 @@ async function main(): Promise<void> {
     // printed for 8 seconds. Guarantees no silent gaps longer than ~8s.
     const stillWorkingInterval = setInterval(() => {
       if (Date.now() - lastActivityTime > 7_000) {
-        console.log("   [Still working...]");
+        console.log(`   [${pickStillWorking()}]`);
         lastActivityTime = Date.now();
       }
     }, 8_000);
@@ -306,7 +317,7 @@ function displayMessage(message: SDKMessage, showSystemInit = true): void {
       } else if (message.subtype === "task_progress") {
         const last = (message as { last_tool_name?: string }).last_tool_name;
         if (last && !isDuplicate(`task_progress:${last}`)) {
-          console.log(`   [Still working... using ${last}]`);
+          console.log(`   [${TOOL_FLAVOR[last] ?? `Using ${last}`}...]`);
           onActivity?.();
         }
       } else if (message.subtype === "task_notification") {
