@@ -17,7 +17,7 @@ The plugin is a folder (`plugin/`) that Claude Code loads directly. Your kid run
 | **3 reference docs** | Luau cheatsheet, Roblox services guide, iPad testing tips (in `plugin/docs/`) |
 | **Safety hook** | Shell hook that blocks dangerous bash commands (`rm -rf`, `sudo`, `npm install -g`, etc.) via `plugin/hooks/hooks.json` |
 
-**What it doesn't have:** No session persistence across days, no achievement celebrations, no frustration detection, no custom MCP tools (syntax checker, progress board, snippet generator).
+**What it doesn't have:** No fun progress messages or agent unlock announcements (uses Claude Code's default status text), no session persistence across days, no achievement celebrations, no frustration detection, no custom MCP tools (syntax checker, progress board, snippet generator).
 
 ## Option B: SDK Wrapper
 
@@ -27,6 +27,8 @@ The SDK wrapper (`src/index.ts`) uses the Claude Agent SDK to run its own conver
 
 | Feature | How It Works |
 |---------|-------------|
+| **Fun progress messages** | 25 rotating thinking messages ("Brewing some code magic..."), 20 still-working messages, and 9 tool-specific labels replace generic "Thinking..." text. Uses a shuffle-bag picker with no back-to-back repeats |
+| **Agent unlock announcements** | When a subagent activates, kids see a video-game-style unlock block with the agent's title and specialty. Completion shows fun messages like "Mission complete!" |
 | **TypeScript hooks** | 4 event-driven hooks wired into the SDK conversation lifecycle (not shell hooks — these run in-process) |
 | **Achievement tracking** | `PostToolUse` hook detects milestones (first script written, first playtest, etc.) and injects celebrations into the conversation |
 | **Frustration detection** | `UserPromptSubmit` hook scans for frustration signals ("i give up", "nothing works", "this is stupid") and injects encouragement before the message reaches Claude |

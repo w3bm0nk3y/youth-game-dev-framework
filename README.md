@@ -16,6 +16,8 @@ No prior coding experience needed. The framework uses simple language, game anal
   - **Play Tester** — Coaches them through testing their game and making it feel polished
 - **Slash commands** to keep things moving (see details below)
 - **8 game pattern templates** — obby, tycoon, battle system, UI design, data saving, game loops, mobile optimization, and publishing
+- **Fun progress messages** — instead of boring "Thinking..." text, kids see game-themed messages like "Rolling a natural 20..." and "Brewing some code magic..." that rotate without repeats
+- **Agent unlock announcements** — when a specialist agent activates, it feels like unlocking a character class: ">>> New agent mode.... unlocked! <<< Luau Tutor -- Scripting and code mastery"
 - **Built-in safety guardrails** — blocks dangerous terminal commands so your kid can experiment freely
 - **Session saving** — Day 1 progress carries over to Day 2
 - **Step-by-step Roblox Studio navigation** — every agent explains exactly where to click, what tab to open, and what panel to look at
@@ -108,6 +110,8 @@ This runs a dedicated hackathon program with extra features on top of everything
    ```
 
 **SDK Wrapper extras** (on top of everything in the plugin):
+- Fun rotating progress messages ("Brewing some code magic...", "Equipping the code sword...") instead of generic "Thinking..."
+- Agent unlock announcements that make specialist activation feel like a video game power-up
 - Achievement celebrations when your kid hits milestones
 - Frustration detection that injects encouragement when they're stuck
 - Safety hooks that block dangerous terminal commands
@@ -129,6 +133,21 @@ Your kid starts the program and sees:
 ```
 
 From there, they just start typing. "I want to build an obby game!" and the AI takes it from there — asking what kind of obstacles they want, showing them how to add parts in Studio, writing the scripts, and helping them test it.
+
+While the AI works, kids see rotating game-themed messages instead of boring loading text:
+
+```
+   Brewing some code magic...
+
+   >>> New agent mode.... unlocked! <<<
+       Luau Tutor -- Scripting and code mastery
+       Task: Help write a coin collection script
+
+   [Reading your game files...]
+
+   <<< Mission complete! >>>
+       I designed a coin collection system with 3 tiers
+```
 
 ## How the AI Mentors Work
 

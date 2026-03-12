@@ -127,6 +127,24 @@ The SDK wrapper runs a custom MCP server (`roblox-dev-tools`) with three tools:
 | **update_progress** | Appends an entry to the team progress board (`progress-board.md`). Tracks who did what and what's next, formatted as a markdown table. |
 | **roblox_snippet** | Generates common Roblox code patterns (touch-to-collect, click-to-buy, leaderboard, round-system, etc.) with explanations and customization tips. 10 patterns available. |
 
+## Progress Messages & Agent Announcements
+
+The SDK wrapper replaces generic "Thinking..." and "[Agent working: ...]" text with a game-themed message system (`src/thinking-messages.ts`).
+
+**Message categories:**
+
+| Category | When shown | Example |
+|----------|-----------|---------|
+| Thinking messages (25) | When a prompt is first submitted | "Rolling a natural 20...", "Brewing some code magic..." |
+| Still-working messages (20) | Every ~8s during long waits | "The code elves are busy...", "Debugging the dragon..." |
+| Tool flavor labels (9) | When an agent uses a tool | "Reading your game files...", "Searching through code..." |
+| Agent unlock messages (8) | When a subagent activates | ">>> New agent mode.... unlocked! <<<" with agent title and specialty |
+| Agent done messages (6) | When a subagent finishes | "<<< Mission complete! >>>" with result summary |
+
+**Shuffle-bag picker:** Messages are drawn from a shuffled bag (Fisher-Yates) that cycles through every message before reshuffling. A boundary dedup check ensures no back-to-back repeats across bag boundaries.
+
+**Agent flavor data:** Each of the 5 agents has a display title and specialty tagline (e.g., "Luau Tutor -- Scripting and code mastery") shown during unlock announcements.
+
 ## Session Persistence
 
 The framework supports multi-day hackathons with automatic session saving.
