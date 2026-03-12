@@ -70,6 +70,37 @@ export const TOOL_FLAVOR: Record<string, string> = {
   WebFetch: "Grabbing info from the web",
 };
 
+// ─── Agent flavor data (title + specialty tagline) ─────────────────
+export const AGENT_FLAVOR: Record<string, { title: string; spec: string }> = {
+  "game-designer": { title: "Game Designer", spec: "Ideas, mechanics, and fun factor" },
+  "luau-tutor": { title: "Luau Tutor", spec: "Scripting and code mastery" },
+  "world-builder": { title: "World Builder", spec: "Maps, terrain, and atmosphere" },
+  "bug-squasher": { title: "Bug Squasher", spec: "Detective work on tricky bugs" },
+  "play-tester": { title: "Play Tester", spec: "Game feel and player experience" },
+};
+
+// ─── Agent unlock announcements ────────────────────────────────────
+export const AGENT_UNLOCK_MESSAGES: readonly string[] = [
+  "New agent mode.... unlocked!",
+  "Specialist activated!",
+  "Calling in the expert!",
+  "Power-up acquired!",
+  "New ally has entered the game!",
+  "Reinforcements have arrived!",
+  "Skill tree expanded!",
+  "Party member joined!",
+];
+
+// ─── Agent completion announcements ────────────────────────────────
+export const AGENT_DONE_MESSAGES: readonly string[] = [
+  "Mission complete!",
+  "Quest finished!",
+  "Level cleared!",
+  "Victory achieved!",
+  "Challenge conquered!",
+  "Boss defeated!",
+];
+
 // ─── Shuffle-bag message picker ─────────────────────────────────────
 
 /**

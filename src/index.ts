@@ -29,12 +29,17 @@ import {
   THINKING_MESSAGES,
   STILL_WORKING_MESSAGES,
   TOOL_FLAVOR,
+  AGENT_FLAVOR,
+  AGENT_UNLOCK_MESSAGES,
+  AGENT_DONE_MESSAGES,
   createMessagePicker,
 } from "./thinking-messages.js";
 
 // ─── Fun message pickers ────────────────────────────────────────
 const pickThinking = createMessagePicker(THINKING_MESSAGES);
 const pickStillWorking = createMessagePicker(STILL_WORKING_MESSAGES);
+const pickUnlock = createMessagePicker(AGENT_UNLOCK_MESSAGES);
+const pickDone = createMessagePicker(AGENT_DONE_MESSAGES);
 
 // ─── Ensure game project directory exists ────────────────────────
 mkdirSync(GAME_PROJECT_DIR, { recursive: true });
@@ -311,8 +316,18 @@ function displayMessage(message: SDKMessage, showSystemInit = true): void {
         console.log();
         onActivity?.();
       } else if (message.subtype === "task_started") {
-        const desc = (message as { description?: string }).description ?? "";
-        console.log(`   [Agent working: ${desc}]`);
+        const taskMsg = message as { description?: string; task_type?: string };
+        const desc = taskMsg.description ?? "";
+        const agentKey = taskMsg.task_type ?? "";
+        const flavor = AGENT_FLAVOR[agentKey];
+        if (flavor) {
+          console.log(`\n   >>> ${pickUnlock()} <<<`);
+          console.log(`       ${flavor.title} -- ${flavor.spec}`);
+          console.log(`       Task: ${desc}\n`);
+        } else {
+          console.log(`\n   >>> ${pickUnlock()} <<<`);
+          console.log(`       Task: ${desc}\n`);
+        }
         onActivity?.();
       } else if (message.subtype === "task_progress") {
         const last = (message as { last_tool_name?: string }).last_tool_name;
@@ -324,7 +339,8 @@ function displayMessage(message: SDKMessage, showSystemInit = true): void {
         const status = (message as { status?: string }).status;
         const summary = (message as { summary?: string }).summary ?? "";
         if (status === "completed" && summary) {
-          console.log(`   [Agent finished: ${summary}]`);
+          console.log(`\n   <<< ${pickDone()} >>>`);
+          console.log(`       ${summary}\n`);
           onActivity?.();
         }
       }
