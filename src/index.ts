@@ -305,13 +305,13 @@ function displayMessage(message: SDKMessage, showSystemInit = true): void {
     case "system": {
       if (!("subtype" in message)) break;
       if (message.subtype === "init" && showSystemInit) {
-        const sysMsg = message as {
-          tools?: string[];
-          agents?: string[];
-          mcp_servers?: Array<{ name: string; status: string }>;
-        };
+        // Count custom resources only (not SDK built-ins)
+        // Tools: create_script, get_documentation, search_catalog (hardcoded — MCP tools aren't introspectable at init)
+        const toolCount = 3;
+        const agentCount = Object.keys(agents).length;
+        const mcpCount = Object.keys(baseOptions.mcpServers).length;
         console.log(
-          `Ready! ${sysMsg.tools?.length ?? 0} tools, ${sysMsg.agents?.length ?? 0} agents, ${sysMsg.mcp_servers?.length ?? 0} MCP servers loaded.`,
+          `Ready! ${toolCount} Roblox tools, ${agentCount} agents, ${mcpCount} MCP server(s) loaded.`,
         );
         console.log();
         onActivity?.();
